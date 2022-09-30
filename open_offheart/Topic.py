@@ -1,23 +1,28 @@
 import json
 import random
 
+import os
+
 class   Topic():
+    topic_count = 0
+
     def __init__(self, filename = None):
         self.filename = filename
         self.good_answer = 0
         self.bad_answer = 0
         self.number_of_questions = 0
-        self.load_topic()
+        self.load_configuration()
+        Topic.topic_count += 1
 
-    def load_topic(self):
-        with open(self.filename) as configuration_file:
+    def load_configuration(self):
+        with open("../topics/" + self.filename) as configuration_file:
             self.configuration = json.load(configuration_file)
             self.questions_answers = self.configuration["questions"]
             self.questions_pool = list(self.configuration["questions"])
             self.number_of_questions = len(self.questions_pool)
     
     def pick_questions(self):
-            pick = random.choice(list(self.configuration["questions"]))
+            pick = random.choice(self.questions_pool)
             print(pick)
             user_answer = input(pick + "?")
             print(user_answer)
