@@ -15,7 +15,7 @@ class   Topic():
         Topic.topic_count += 1
 
     def load_configuration(self):
-        with open("./topics/" + self.filename) as configuration_file:
+        with open("../topics/" + self.filename) as configuration_file:
             self.configuration = json.load(configuration_file)
             self.questions_answers = self.configuration["questions"]
             self.questions_pool = list(self.configuration["questions"])

@@ -1,4 +1,3 @@
-from pydoc_data.topics import topics
 from Topic import Topic
 import os
 
@@ -12,7 +11,7 @@ class   Exam():
         pass
 
     def load_topics(self):
-        topics_repository = os.listdir("./topics")
+        topics_repository = os.listdir("../topics")
         for topic_filename in topics_repository:
             self.topics.append(Topic(topic_filename))
         self.number_of_topics = Topic.topic_count
