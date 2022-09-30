@@ -16,3 +16,10 @@ class   Exam():
         for topic_filename in topics_repository:
             self.topics.append(Topic(topic_filename))
         self.number_of_topics = Topic.topic_count
+    
+    def run(self):
+        for topic in self.topics:
+            while topic.get_score() < 1:
+                topic.pick_questions()
+            print("Congrats you finished: x" + topic.filename)
+                
