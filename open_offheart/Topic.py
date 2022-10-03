@@ -17,15 +17,14 @@ class   Topic():
     def load_configuration(self):
         with open("../topics/" + self.filename) as configuration_file:
             self.configuration = json.load(configuration_file)
+            self.name = self.configuration["name"]
             self.questions_answers = self.configuration["questions"]
             self.questions_pool = list(self.configuration["questions"])
             self.number_of_questions = len(self.questions_pool)
     
     def pick_questions(self):
             pick = random.choice(self.questions_pool)
-            print(pick)
             user_answer = input(pick + "?")
-            print(user_answer)
             if (user_answer != self.questions_answers[pick]):
                 print("Wrong, Answer was:" + self.questions_answers[pick])
                 self.bad_answer += 1
@@ -34,8 +33,6 @@ class   Topic():
                 self.questions_pool.remove(pick)
                 self.good_answer += 1
             self.score = 1 - len(self.questions_pool) / self.number_of_questions
-            print(self.questions_answers[pick])
-            print(self.questions_pool)
 
     def get_score(self):
         score = 1 - len(self.questions_pool) / self.number_of_questions

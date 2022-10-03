@@ -20,5 +20,5 @@ class   Exam():
         for topic in self.topics:
             while topic.get_score() < 1:
                 topic.pick_questions()
-            print("Congrats you finished: x" + topic.filename)
+            print("Congrats you finished: " + topic.name)
                 
